@@ -1,15 +1,13 @@
 package br.edu.papayaSugar.entidade;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Curso {
 
     private String nome;
     private String instrutor;
     private List<Aula> listaAulas = new ArrayList<>();
+    private Set<Aluno> alunos = new HashSet<>();
 
 
     public Curso(String nome, String instrutor) {
@@ -45,5 +43,17 @@ public class Curso {
     public String toString() {
 
         return "[Curso: "+ nome + ", tempo total: " + getTempoTotal()+" minutos" + ", aulas: "+ listaAulas+ " ]";
+    }
+
+    public void matriculaAluno(Aluno aluno){
+        this.alunos.add(aluno);
+    }
+
+    public Set<Aluno> getAlunos() {
+        return Collections.unmodifiableSet(alunos);
+    }
+
+    public boolean estaMatricula(Aluno aluno) {
+        return this.alunos.contains(aluno);
     }
 }
