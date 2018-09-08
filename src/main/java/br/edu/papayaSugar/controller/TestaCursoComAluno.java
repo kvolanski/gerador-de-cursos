@@ -4,6 +4,10 @@ import br.edu.papayaSugar.entidade.Aluno;
 import br.edu.papayaSugar.entidade.Aula;
 import br.edu.papayaSugar.entidade.Curso;
 
+import java.util.Iterator;
+import java.util.Set;
+import java.util.Vector;
+
 public class TestaCursoComAluno {
 
 
@@ -26,11 +30,26 @@ public class TestaCursoComAluno {
         javaCurso.matriculaAluno(aluno3);
 
         System.out.println("Todos os alunos matriculados no curso: ");
-        javaCurso.getAlunos().forEach(a -> System.out.println(a));
+
+        Set<Aluno> alunos = javaCurso.getAlunos();
+        Iterator<Aluno> iterator = alunos.iterator();
+        while (iterator.hasNext()){
+            Aluno proximo = iterator.next();
+            System.out.println(proximo);
+        }
+
+        Vector<Aluno> vetor = new Vector<>();
+
+        //iterator.forEachRemaining(aluno -> System.out.println(aluno));
+
+        //javaCurso.getAlunos().forEach(a -> System.out.println(a));
+
+//
+//        System.out.println("O aluno " + aluno1 + "esta matriculado? ");
+//        System.out.println(javaCurso.estaMatricula(aluno1));
 
 
-        System.out.println("O aluno " + aluno1 + "esta matriculado? ");
-        System.out.println(javaCurso.estaMatricula(aluno1));
+
 
 
     }
